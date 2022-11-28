@@ -99,9 +99,9 @@ async fn wokwi_task(
     mut send: Sender<String>,
     mut recv: Receiver<GdbInstruction>,
 ) -> Result<()> {
-    let server = TcpListener::bind(("127.0.0.1", PORT))
+    let server = TcpListener::bind(("0.0.0.0", PORT))
         .await
-        .with_context(|| format!("Failed to listen on 127.0.0.1:{}", PORT))?;
+        .with_context(|| format!("Failed to listen on 0.0.0.0:{}", PORT))?;
 
     let project_id = match opts.id.clone() {
         Some(id) => id,
